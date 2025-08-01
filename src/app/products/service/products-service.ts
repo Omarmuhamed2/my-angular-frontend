@@ -64,7 +64,7 @@ export class ProductsService {
     });
   }
   createOrder(orderData: any): Observable<any> {
-  return this.http.post('http://ecommerce-api.onrender.com/api/v1', orderData);
+  return this.http.post('https://localhost:5000/api/v1', orderData);
 }
 uploadImage(formData: FormData, token: string): Observable<any> {
   return this.http.post(`${environment.apiUrl}/upload`, formData, {
@@ -76,3 +76,4 @@ uploadImage(formData: FormData, token: string): Observable<any> {
 
 
 }
+  
