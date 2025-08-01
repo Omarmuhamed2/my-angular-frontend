@@ -1,0 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+app-root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+}
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .btn-shop {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .about-us h2,
+  .features h2,
+  .featured-products h2 {
+    font-size: 24px;
+  }
+
+  .about-us p {
+    font-size: 16px;
+  }
+
+  .product-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .products-grid,
+  .features-grid {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+  }
+}
+

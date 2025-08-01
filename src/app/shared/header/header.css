@@ -1,0 +1,130 @@
+/* ✅ شكل الـ navbar */
+.navbar {
+  background-color: #000;
+  padding: 10px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  direction: ltr;
+}
+
+/* ✅ ترتيب داخلي */
+.container {
+  display: flex;
+  align-items: center;
+}
+
+/* ✅ اللوجو */
+.logo-script {
+  font-family: 'Dancing Script', cursive;
+  font-size: 42px;
+  font-weight: 400;
+  color: #FFD700;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  user-select: none;
+  transition: 0.3s;
+  margin-right: auto;
+}
+
+/* ✅ روابط التنقل */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-links a,
+.nav-link.btn-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-link.btn-link:hover {
+  color: #000;
+  background-color: #FFD700;
+}
+
+/* ✅ البادج */
+.badge.bg-dark {
+  background-color: #FFD700;
+  color: #000;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+/* ✅ أيقونة FontAwesome */
+fa-icon {
+  margin-right: 6px;
+  font-size: 18px;
+}
+.logo-img img {
+  height: 80px;
+  object-fit: contain;
+  user-select: none;
+  transition: transform 0.3s;
+}
+
+.logo-img img:hover {
+  transform: scale(1.05);
+}
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo-script {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .nav-links a,
+  .nav-link.btn-link {
+    width: 100%;
+    padding: 10px 0;
+    text-align: left;
+  }
+
+  .logo-img img {
+    height: 60px;
+  }
+}
+.menu-toggle {
+  display: none;
+  color: #FFD700;
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+  .navbar{
+    padding: 8px 10px;
+  }
+}
+

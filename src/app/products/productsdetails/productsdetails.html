@@ -1,0 +1,14 @@
+<div class="product-details" *ngIf="product">
+  <img [src]="getImageUrl(product.image)" class="cart-img" />
+
+  <h2>{{ product.name }}</h2>
+  <p><strong>Price:</strong> {{ product.price }} جنيه</p>
+  <p>{{ product.description }}</p>
+  
+  
+  
+  <button class="btn-back" (click)="goBack()">
+  <fa-icon [icon]="faArrowLeft"></fa-icon> رجوع
+</button>
+
+</div>

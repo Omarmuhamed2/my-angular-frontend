@@ -1,0 +1,58 @@
+<h2>All Products</h2>
+
+<!-- نموذج إضافة منتج -->
+<form (submit)="addProduct(); $event.preventDefault()" class="add-product-form">
+  <label>
+    Name:
+    <input type="text" [(ngModel)]="newProduct.name" name="name" required />
+  </label>
+
+  <label>
+    Price: 
+    <input type="number" [(ngModel)]="newProduct.price" name="price" required />
+  </label>
+
+  <label>
+    Description:
+    <textarea [(ngModel)]="newProduct.description" name="description" required></textarea>
+  </label>
+
+  <label>
+  Upload Image:
+  <input type="file" (change)="onFileSelected($event)" />
+</label>
+
+<!-- Preview للصورة لو اتضافت -->
+<img *ngIf="newProduct.image" [src]="getImageUrl(newProduct.image)" width="150" />
+
+
+  <label>
+    Category:
+    <select [(ngModel)]="newProduct.category" name="category" required>
+      <option *ngFor="let cat of categories" [value]="cat._id">{{ cat.name }}</option>
+    </select>
+  </label>
+
+  <label>
+    Company:
+    <input type="text" [(ngModel)]="newProduct.company" name="company" required />
+  </label>
+
+  <label>
+    Inventory:
+    <input type="number" [(ngModel)]="newProduct.inventory" name="inventory" required />
+  </label>
+
+  <button type="submit">Add Product</button>
+</form>
+
+<!-- قائمة المنتجات -->
+<div class="product-list">
+  <div *ngFor="let product of products" class="product-card">
+    <img [src]="getImageUrl(product.image)" alt="{{ product.name }}" class="product-img" />
+    <h3>{{ product.name }}</h3>
+    <p>{{ product.description }}</p>
+    <p><strong>Price:</strong> {{ product.price }} $</p>
+    <button (click)="deleteProduct(product._id)">Delete</button>
+  </div>
+</div>

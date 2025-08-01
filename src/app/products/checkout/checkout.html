@@ -1,0 +1,31 @@
+<div class="checkout-container">
+  <h2>Checkout</h2>
+
+  <form #checkoutForm="ngForm" (ngSubmit)="submitOrder()">
+    <label>
+      Name:
+      <input type="text" name="name" [(ngModel)]="name" required />
+    </label>
+
+    <label>
+      Address:
+      <input type="text" name="address" [(ngModel)]="address" required />
+    </label>
+
+    <label>
+      Phone:
+      <input type="text" name="phone" [(ngModel)]="phone" required />
+    </label>
+
+    <h3>Cart Summary:</h3>
+    <ul>
+      <li *ngFor="let item of cartItems">
+        {{ item.name }} - {{ item.quantity }} × {{ item.price }}جنيه
+      </li>
+    </ul>
+
+    <p><strong>Total:</strong> {{ total }}$</p>
+
+    <button type="submit" [disabled]="!checkoutForm.valid">Place Order</button>
+  </form>
+</div>

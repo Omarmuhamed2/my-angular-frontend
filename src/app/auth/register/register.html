@@ -1,0 +1,26 @@
+<div class="register-wrapper">
+  <div class="register-box">
+    <h2>Register</h2>
+
+    <div class="input-group">
+      <fa-icon [icon]="faUser"></fa-icon>
+      <input type="text" placeholder="Name" [(ngModel)]="name" name="name" required />
+    </div>
+
+    <div class="input-group">
+      <fa-icon [icon]="faEnvelope"></fa-icon>
+      <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required />
+    </div>
+
+    <div class="input-group">
+      <fa-icon [icon]="faLock"></fa-icon>
+      <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required />
+    </div>
+
+    <button class="register-btn" (click)="register()">Register</button>
+
+    <div class="message">{{ message }}</div>
+
+    
+  </div>
+</div>

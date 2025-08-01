@@ -1,0 +1,31 @@
+<header class="navbar">
+  <div class="container">
+    <!-- ✅ الخط -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+    <!-- ✅ اللوجو -->
+    <a routerLink="/" class="logo-img">
+      <img src="/images/1.jpeg" alt="White Light Logo" />
+    </a>
+
+    <!-- ✅ زر التوجل -->
+    <div class="menu-toggle" (click)="toggleMenu()">
+      ☰
+    </div>
+
+    <!-- ✅ روابط التنقل -->
+    <div class="nav-links" [ngClass]="{ 'show': isMenuOpen }">
+      <a routerLink="/home">عن الشركة</a>
+      <a routerLink="/products">منتجات</a>
+      <a routerLink="/cart">
+        <fa-icon [icon]="faShoppingCart"></fa-icon>
+        <span class="badge bg-dark">{{ cartCounter }}</span>
+      </a>
+      <a *ngIf="isAdmin" routerLink="/admin">إضافة منتج</a>
+      <a *ngIf="isAdmin" routerLink="/admin-order">طلبات</a>
+      <button *ngIf="isLoggedIn" (click)="logout()" class="nav-link btn btn-link">تسجيل خروج</button>
+      <a *ngIf="!isLoggedIn" routerLink="/login">تسجيل دخول</a>
+      <a *ngIf="!isLoggedIn" routerLink="/register">إنشاء حساب</a>
+    </div>
+  </div>
+</header>

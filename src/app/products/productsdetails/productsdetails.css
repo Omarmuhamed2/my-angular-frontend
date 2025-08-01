@@ -1,0 +1,94 @@
+.product-details {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.product-details img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  padding: 10px;
+}
+
+.product-details h2 {
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 26px;
+}
+
+.product-details p {
+  font-size: 16px;
+  color: #555;
+  margin: 10px 0;
+}
+
+.product-details strong {
+  color: #222;
+}
+
+/* زر الرجوع */
+.btn-back {
+  margin: 20px auto 0;       /* زر في الأسفل بمسافة عن المحتوى */
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
+  user-select: none;
+}
+
+.btn-back:hover {
+  background-color: #0056b3;
+  box-shadow: 0 6px 12px rgba(0, 86, 179, 0.6);
+}
+
+.btn-back fa-icon {
+  font-size: 18px;
+  color: white;
+}
+
+/* ريسبونسف */
+@media (max-width: 600px) {
+  .product-details {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  .product-details h2 {
+    font-size: 22px;
+  }
+
+  .product-details p {
+    font-size: 14px;
+  }
+
+  .btn-back {
+    font-size: 14px;
+    padding: 10px 20px;
+    gap: 8px;
+  }
+
+  .btn-back fa-icon {
+    font-size: 16px;
+  }
+}
+@media (max-width: 768px) {
+  .hero h1 { font-size: 28px; }
+}
+

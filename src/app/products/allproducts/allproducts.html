@@ -1,0 +1,49 @@
+<!-- ✅ قائمة التصنيفات -->
+<div class="category-buttons">
+  <!-- زر الكل -->
+  <div
+    class="category-button"
+    (click)="selectCategory('all')"
+    [class.active]="selectedCategory === 'all'"
+  >
+    الكل
+  </div>
+
+  <!-- باقي التصنيفات -->
+  <div
+    class="category-button"
+    *ngFor="let cat of categories"
+    (click)="selectCategory(cat._id)"
+    [class.active]="selectedCategory === cat._id"
+  >
+    {{ cat.name }}
+  </div>
+</div>
+
+<!-- ✅ Spinner (Loader) -->
+<div class="loader-container" *ngIf="isLoadingProducts">
+  <span class="loader"></span>
+</div>
+
+<!-- ✅ المنتجات -->
+<div class="products-container">
+  <div *ngFor="let product of products" class="product-card">
+    <img [src]="getImageUrl(product.image)" />
+
+    <h3>{{ product.name }}</h3>
+    <p class="price">السعر: {{ product.price }} جنيه</p>
+    
+   <div class="buttons">
+  <div class="product-buttons">
+  <button class="icon-btn" [routerLink]="['/products', product._id]" title="عرض التفاصيل">
+    <fa-icon [icon]="faInfoCircle"></fa-icon>
+  </button>
+
+  <button class="icon-btn" (click)="addToCart(product)" title="أضف إلى السلة">
+    <fa-icon [icon]="faShoppingCart"></fa-icon>
+  </button>
+</div>
+</div>
+
+  </div>
+</div>

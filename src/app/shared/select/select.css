@@ -1,0 +1,27 @@
+.custom-select { 
+    appearance: none; /* نشيل الشكل الافتراضي */
+    background-color: #ffffff; /* أبيض خلفية */
+    color: #333; /* لون كتابة */
+    padding: 12px 20px; /* وسط لا صغير ولا كبير */
+    border: 2px solid #e0f7fa; /* سماوي فاتح */
+    border-radius: 30px; /* مدورة بس مش مبالغ فيها */
+    font-size: 16px; /* خط متوسط */
+    cursor: pointer;
+    outline: none;
+    width: 100%;
+    max-width: 220px; /* مش عريضة، وسط كده */
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 12px;
+    box-shadow: 0 2px 5px rgba(0, 114, 255, 0.1); /* ظل بسيط */
+    margin-bottom: 30px; /* شوية مسافة تحتها عشان dropdown ميغبطش في اللي تحته */
+    height: 50px; /* تعملها أطول شوية بشكل ظريف */
+}
+
+.custom-select:hover {
+    border-color: #00dbde; /* Hover لون أزرق سماوي */
+    box-shadow: 0 4px 10px rgba(0, 114, 255, 0.15);
+}
+
+
+

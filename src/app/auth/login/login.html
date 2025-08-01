@@ -1,0 +1,22 @@
+<div class="login-wrapper">
+  <div class="login-box">
+    <h2>تسجيل الدخول</h2>
+
+    <div class="input-group">
+      <fa-icon [icon]="'envelope'"></fa-icon>
+      <input type="email" [(ngModel)]="email" placeholder="البريد الإلكتروني" />
+    </div>
+
+    <div class="input-group">
+      <fa-icon [icon]="'lock'"></fa-icon>
+      <input type="password" [(ngModel)]="password" placeholder="كلمة المرور" />
+    </div>
+
+    <button class="login-btn" (click)="login()">دخول</button>
+
+   <a routerLink="/register" class="link-btn" style="pointer-events: auto; z-index: 9999;">
+
+</a>
+
+
+</div>

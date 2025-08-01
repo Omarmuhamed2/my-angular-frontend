@@ -1,0 +1,119 @@
+.register-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f7f7f7;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+}
+
+.register-box {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.register-box h2 {
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 26px;
+  color: #333;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px 15px;
+  background: #fafafa;
+  transition: border-color 0.3s ease;
+}
+
+.input-group:hover,
+.input-group:focus-within {
+  border-color: #007bff;
+}
+
+.input-group fa-icon {
+  margin-right: 12px;
+  color: #007bff;
+  font-size: 18px;
+  min-width: 20px;
+}
+
+.input-group input {
+  border: none;
+  outline: none;
+  flex: 1;
+  background: transparent;
+  font-size: 15px;
+  color: #333;
+}
+
+.input-group input::placeholder {
+  color: #999;
+}
+
+.register-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-btn:hover {
+  background-color: #0056b3;
+}
+
+.message {
+  margin-top: 15px;
+  font-weight: 600;
+  color: #28a745;
+}
+
+.redirect {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+.redirect a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.redirect a:hover {
+  color: #0056b3;
+}
+@media (max-width: 480px) {
+  .register-wrapper {
+    padding: 10px;
+  }
+
+  .register-box {
+    padding: 20px;
+  }
+
+  .input-group {
+    padding: 8px 10px;
+  }
+
+  .register-btn {
+    padding: 10px;
+  }
+}

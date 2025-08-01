@@ -1,0 +1,40 @@
+<section class="cart-container">
+  <h1 class="cart-title"><fa-icon [icon]="faShoppingCart"></fa-icon> سلة المشتريات</h1>
+
+  <div *ngIf="cartProduct.length > 0; else emptyCart" class="cart-list">
+    <div *ngFor="let product of cartProduct; let i = index" class="cart-item">
+      <img [src]="getImageUrl(product.image)" class="cart-img" />
+
+      <div class="cart-info">
+        <h4>{{ product.name }} <span class="qty">× {{ product.quantity || 1 }}</span></h4>
+        <p class="price">{{ product.price }} ج.م</p>
+       <div class="cart-info-buttons">
+  <button class="buy-button" (click)="goToCheckout()">
+    <fa-icon [icon]="faShoppingCart"></fa-icon> شراء الآن
+  </button>
+  <button (click)="removeItem(i)" class="btn-delete">
+    <fa-icon [icon]="faTrash"></fa-icon> حذف
+  </button>
+</div>
+
+      </div>
+    </div>
+
+    <div class="cart-summary">
+      <h3>الإجمالي: {{ getTotal() }} ج.م</h3>
+      <button (click)="clearCart()" class="btn-clear">
+        <fa-icon [icon]="faBroom"></fa-icon> تفريغ السلة
+      </button>
+      <button (click)="back()" class="btn btn-secondary">
+        <fa-icon [icon]="faArrowLeft"></fa-icon> رجوع
+      </button>
+    </div>
+  </div>
+
+  <ng-template #emptyCart>
+    <p class="empty-message">السلة فارغة 💤</p> 
+    <button (click)="back()" class="btn btn-secondary">
+        <fa-icon [icon]="faArrowLeft"></fa-icon> رجوع
+      </button>
+  </ng-template>
+</section>

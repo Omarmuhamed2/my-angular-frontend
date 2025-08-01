@@ -1,0 +1,86 @@
+.footer {
+  background-color: #000;
+  color: #FFD700;
+  padding: 10px 0;
+  width: 100%;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  bottom: 0;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  color: #FFD700;
+}
+
+.footer-links {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #FFD700;
+}
+
+.separator {
+  color: #555;
+  user-select: none;
+}
+
+/* أيقونات التواصل الاجتماعي */
+  .footer-icons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .footer-icons a {
+    color: #FFD700;
+    font-size: 20px;
+    transition: color 0.3s ease;
+  }
+
+  .footer-icons a:hover {
+    color: #fff;
+  }
+@media (max-width: 768px) {
+  .footer {
+    padding: 8px 10px;  /* أقل padding عشان ياخد مساحة أقل */
+  }
+
+  .footer p {
+    font-size: 0.75rem;  /* حجم خط أصغر */
+  }
+
+  .footer-links {
+    gap: 4px;
+    margin-top: 4px;
+  }
+
+  .footer-links a {
+    font-size: 0.75rem;  /* حجم خط أصغر */
+  }
+
+  .footer-icons {
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .footer-icons a {
+    font-size: 14px;  /* أيقونات أصغر */
+  }
+}
