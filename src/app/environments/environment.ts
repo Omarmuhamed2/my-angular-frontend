@@ -1,4 +1,4 @@
 export const environment = {
-  production: false,
-  apiUrl: 'http://localhost:5000/api/v1' // أو الرابط المحلي بتاعك
+  production: true,
+  apiUrl: 'https://ecommerce-api-0lbj.onrender.com/api/v1'
 };
