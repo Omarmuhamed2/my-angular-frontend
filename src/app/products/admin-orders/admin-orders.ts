@@ -18,7 +18,7 @@ export class AdminOrders implements OnInit {
   ) {}
 
   ngOnInit() {
-  this.http.get(`${this.baseUrl}/api/v1/orders`, {
+  this.http.get(`${this.baseUrl}/orders`, {
 
     headers: {
       Authorization: `Bearer ${this.authService.getToken()}`
@@ -31,7 +31,7 @@ export class AdminOrders implements OnInit {
 
 getOrders(): void {
   const token = localStorage.getItem('token');
-  this.http.get<any[]>(`${this.baseUrl}/api/v1/orders`, {
+  this.http.get<any[]>(`${this.baseUrl}/orders`, {
     headers: { Authorization: `Bearer ${token}` }
   })
   .subscribe({
@@ -45,7 +45,7 @@ deleteOrder(orderId: string): void {
   const confirmDelete = confirm("Are you sure you want to delete this order?");
   if (!confirmDelete) return;
 
-  this.http.delete(`${this.baseUrl}/api/v1/orders/${orderId}`)
+  this.http.delete(`${this.baseUrl}/orders/${orderId}`)
     .subscribe({
       next: () => {
         this.orders = this.orders.filter(order => order._id !== orderId);

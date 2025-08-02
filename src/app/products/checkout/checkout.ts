@@ -60,7 +60,7 @@ export class Checkout implements OnInit {
       },
       error: (err) => {
                  console.error('❌ Order error:', err);
-                 this.toaste.error(err?.error?.msg || 'Failed to place order. Please try again.');
+  this.toaste.error(err?.error?.msg || 'Failed to place order. Please try again.');
 }
 
     });

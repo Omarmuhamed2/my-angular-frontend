@@ -25,7 +25,7 @@ export class ProductsService {
 
   // ✅ Get product by ID
   getPrdById(id: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/api/v1//${id}`, {
+    return this.http.get(`${this.apiUrl}/${id}`, {
       withCredentials: true,
     });
   }
@@ -48,7 +48,7 @@ export class ProductsService {
   // ✅ Delete product
   deleteProduct(productId: string): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.delete(`${this.apiUrl}/api/v1/${productId}`, {
+    return this.http.delete(`${this.apiUrl}/${productId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -58,7 +58,7 @@ export class ProductsService {
   // ✅ Get products by category
   getProductsByCategory(categoryId: string): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(`${this.apiUrl}/api/v1/?category=${categoryId}`, {
+    return this.http.get(`${this.apiUrl}?category=${categoryId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -67,11 +67,18 @@ export class ProductsService {
 
   // ✅ Create order
 createOrder(orderData: any): Observable<any> {
-  const headers = {
+  const token = localStorage.getItem('token');
+
+  const headers: any = {
     'Content-Type': 'application/json',
   };
 
- return this.http.post(`${environment.apiUrl}/api/v1/orders`, orderData, { headers }); 
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+
+ return this.http.post(`${environment.apiUrl}/orders`, orderData, { headers });
+
 }
 
 
