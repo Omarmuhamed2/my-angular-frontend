@@ -17,10 +17,11 @@
     <textarea [(ngModel)]="newProduct.description" name="description" required></textarea>
   </label>
 
-  <label>
+ <label>
   Upload Image:
-  <input type="text" [(ngModel)]="newProduct.image" placeholder="Enter image URL" />
+  <input type="file" (change)="onFileSelected($event)" />
 </label>
+
 
 <!-- Preview للصورة لو اتضافت -->
 <img *ngIf="newProduct.image" [src]="getImageUrl(newProduct.image)" width="150" />
@@ -44,7 +45,7 @@
   </label>
 
   <button type="submit">Add Product</button>
-</form>
+</form> 
 
 <!-- قائمة المنتجات -->
 <div class="product-list">

@@ -13,7 +13,8 @@ import { HttpClient } from '@angular/common/http';
 export class Admin implements OnInit,CanActivate {
   products: any[] = [];
   categories: any[] = [];
-  selectedFile!: File;
+  selectedFile: File | null = null;
+
 
   newProduct: any = {
     name: '',
@@ -90,15 +91,7 @@ export class Admin implements OnInit,CanActivate {
   return 'http://localhost:5000' + imagePath;
 } */
 getImageUrl(imagePath: string): string {
-  if (!imagePath) return '';
-
-  // لو الرابط خارجي (postimg أو غيره) رجّعه زي ما هو
-  if (imagePath.startsWith('http')) {
-    return imagePath;
-  }
-
-  // غير كده، نركّبه على السيرفر
-  return `${environment.imageBaseUrl}${imagePath}`;
+  return imagePath; // الصورة جاية جاهزة كاملة
 }
 
 
@@ -137,30 +130,21 @@ canActivate(): boolean {
 } */
 onFileSelected(event: any) {
   const file = event.target.files[0];
-  if (!file) return;
+  if (file) {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', 'your_upload_preset'); // ← غيرها حسب إعداداتك في Cloudinary
 
-  const formData = new FormData();
-  formData.append('image', file);
-
-  const token = localStorage.getItem('token');
-
-  this.http.post<{ image: string }>(
-    `${environment.apiUrl}/api/v1/upload`, 
-    formData, 
-    {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }
-  ).subscribe({
-    next: (res) => {
-      this.newProduct.image = `https://ecommerce-api-0lbj.onrender.com${res.image}`;
-      console.log('Image uploaded:', this.newProduct.image);
-    },
-    error: (err) => {
-      console.error('Image upload error:', err);
-    }
-  });
+    // Send to Cloudinary
+    fetch('https://api.cloudinary.com/v1_1/your_cloud_name/image/upload', {
+      method: 'POST',
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+      this.newProduct.image = data.secure_url;  // ← دا الرابط النهائي للصورة
+    })
+    .catch(err => console.error('Image upload failed', err));
+  }
 }
-
 }

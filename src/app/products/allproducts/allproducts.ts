@@ -92,15 +92,12 @@ export class Allproducts implements OnInit {
 
  getImageUrl(imagePath: string): string {
   if (!imagePath) return '';
+  if (imagePath.startsWith('http')) return imagePath;
 
-  // لو الرابط خارجي (postimg أو غيره) رجّعه زي ما هو
-  if (imagePath.startsWith('http')) {
-    return imagePath;
-  }
-
-  // غير كده، نركّبه على السيرفر
-  return `${environment.imageBaseUrl}${imagePath}`;
+  // لو الصور بترجع من /uploads/image.jpg
+  return `${environment.imageBaseUrl}uploads/${imagePath}`;
 }
+
 
 
 
