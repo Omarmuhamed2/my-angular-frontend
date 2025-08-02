@@ -19,7 +19,7 @@
 
   <label>
   Upload Image:
-  <input type="file" (change)="onFileSelected($event)" />
+  <input type="text" [(ngModel)]="newProduct.image" placeholder="Enter image URL" />
 </label>
 
 <!-- Preview للصورة لو اتضافت -->
