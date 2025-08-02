@@ -28,7 +28,8 @@
 <!-- ✅ المنتجات -->
 <div class="products-container">
   <div *ngFor="let product of products" class="product-card">
-    <img [src]="getImageUrl(product.image)" />
+    <img [src]="product.image" alt="product image" />
+
 
     <h3>{{ product.name }}</h3>
     <p class="price">السعر: {{ product.price }} جنيه</p>
