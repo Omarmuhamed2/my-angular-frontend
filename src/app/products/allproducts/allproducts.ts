@@ -90,6 +90,8 @@ export class Allproducts implements OnInit {
   }
 
   getImageUrl(imagePath: string): string {
-    return 'http://localhost:5000' + imagePath;
-  }
+  return environment.imageBaseUrl + imagePath;
+}
+
+
 }

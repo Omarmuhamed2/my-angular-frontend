@@ -9,13 +9,16 @@ import { environment } from '../../../environments/environment';
 export class ProductsService {
   private apiUrl = `${environment.apiUrl}/products`;
   private categoriesUrl = `${environment.apiUrl}/categories`;
+  private ordersUrl = `${environment.apiUrl}/orders`;
+  private uploadUrl = `${environment.apiUrl}/upload`;
+  private imageBaseUrl = environment.imageBaseUrl;
 
   constructor(private http: HttpClient) {}
 
   // ✅ Get all products
   getAllProducts(): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(`${this.apiUrl}`, {
+    return this.http.get(this.apiUrl, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -54,7 +57,7 @@ export class ProductsService {
     });
   }
 
-  // ✅ Optional: Get products by category from backend (if needed)
+  // ✅ Get products by category
   getProductsByCategory(categoryId: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(`${this.apiUrl}?category=${categoryId}`, {
@@ -63,18 +66,24 @@ export class ProductsService {
       },
     });
   }
+
+  // ✅ Create order
   createOrder(orderData: any): Observable<any> {
- return this.http.post(`${environment.apiUrl}/orders`, orderData);
+    return this.http.post(this.ordersUrl, orderData);
+  }
 
-}
-uploadImage(formData: FormData, token: string): Observable<any> {
-  return this.http.post(`${environment.apiUrl}/upload`, formData, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  });
-}
+  // ✅ Upload image
+  uploadImage(formData: FormData): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http.post(this.uploadUrl, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  }
 
-
+  // ✅ Get full image URL
+  getImageUrl(imagePath: string): string {
+    return `${this.imageBaseUrl}${imagePath}`;
+  }
 }
-  
