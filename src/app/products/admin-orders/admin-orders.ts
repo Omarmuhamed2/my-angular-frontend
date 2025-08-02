@@ -30,12 +30,16 @@ export class AdminOrders implements OnInit {
 }
 
 getOrders(): void {
-  this.http.get<any[]>(`${this.baseUrl}/orders`)
-    .subscribe({
-      next: (data) => this.orders = data,
-      error: (err) => console.error('❌ Error loading orders:', err)
-    });
+  const token = localStorage.getItem('token');
+  this.http.get<any[]>(`${this.baseUrl}/orders`, {
+    headers: { Authorization: `Bearer ${token}` }
+  })
+  .subscribe({
+    next: (data) => this.orders = data,
+    error: (err) => console.error('❌ Error loading orders:', err)
+  });
 }
+
 
 deleteOrder(orderId: string): void {
   const confirmDelete = confirm("Are you sure you want to delete this order?");

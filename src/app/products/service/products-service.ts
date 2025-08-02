@@ -71,7 +71,7 @@ createOrder(orderData: any): Observable<any> {
     'Content-Type': 'application/json',
   };
 
-  return this.http.post('https://ecommerce-api-0lbj.onrender.com/api/v1/orders', orderData, { headers });
+ return this.http.post(`${environment.apiUrl}/orders`, orderData, { headers }); 
 }
 
 
