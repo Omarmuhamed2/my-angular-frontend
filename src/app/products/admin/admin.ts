@@ -86,9 +86,13 @@ export class Admin implements OnInit,CanActivate {
     });
   }
 
-  getImageUrl(imagePath: string): string {
+  /* getImageUrl(imagePath: string): string {
   return 'http://localhost:5000' + imagePath;
+} */
+getImageUrl(imagePath: string): string {
+  return `${environment.imageBaseUrl}${imagePath}`;
 }
+
 canActivate(): boolean {
     const role = localStorage.getItem('role');
     if (role === 'admin') {
@@ -99,7 +103,7 @@ canActivate(): boolean {
     }
   }
 
- onFileSelected(event: any) {
+ /* onFileSelected(event: any) {
   const file = event.target.files[0];
   if (!file) return;
 
@@ -116,6 +120,33 @@ canActivate(): boolean {
     next: (res) => {
       this.newProduct.image = res.image; // "/uploads/xxx.jpeg"
       console.log('Image uploaded:', res.image);
+    },
+    error: (err) => {
+      console.error('Image upload error:', err);
+    }
+  });
+} */
+onFileSelected(event: any) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const formData = new FormData();
+  formData.append('image', file);
+
+  const token = localStorage.getItem('token');
+
+  this.http.post<{ image: string }>(
+    `${environment.apiUrl}/api/v1/upload`, 
+    formData, 
+    {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
+  ).subscribe({
+    next: (res) => {
+      this.newProduct.image = `https://ecommerce-api-0lbj.onrender.com${res.image}`;
+      console.log('Image uploaded:', this.newProduct.image);
     },
     error: (err) => {
       console.error('Image upload error:', err);
