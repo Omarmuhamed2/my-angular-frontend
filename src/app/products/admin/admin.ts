@@ -91,8 +91,9 @@ export class Admin implements OnInit,CanActivate {
   return 'http://localhost:5000' + imagePath;
 } */
 getImageUrl(imagePath: string): string {
-  return imagePath; // الصورة جاية جاهزة كاملة
+  return imagePath;
 }
+
 
 
 canActivate(): boolean {
@@ -133,18 +134,19 @@ onFileSelected(event: any) {
   if (file) {
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('upload_preset', 'your_upload_preset'); // ← غيرها حسب إعداداتك في Cloudinary
-
-    // Send to Cloudinary
-    fetch('https://api.cloudinary.com/v1_1/your_cloud_name/image/upload', {
+    formData.append('upload_preset', 'unsigned_upload'); // ✅ اسم الـ preset اللي عندك
+    fetch('https://api.cloudinary.com/v1_1/duo8p0xhk/image/upload', {
       method: 'POST',
       body: formData
     })
     .then(res => res.json())
     .then(data => {
-      this.newProduct.image = data.secure_url;  // ← دا الرابط النهائي للصورة
+      this.newProduct.image = data.secure_url;
+      console.log('✅ Image uploaded to Cloudinary:', data.secure_url);
     })
-    .catch(err => console.error('Image upload failed', err));
+    .catch(err => console.error('❌ Image upload failed', err));
   }
 }
+
+
 }
