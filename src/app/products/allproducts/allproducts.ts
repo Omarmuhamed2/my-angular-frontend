@@ -42,6 +42,7 @@ export class Allproducts implements OnInit {
         this.allProducts = res.products || res.product || [];
         this.products = [...this.allProducts];
         this.isLoadingProducts = false;
+         console.log(this.products);
       },
       error: (err) => {
         console.error('Error fetching products:', err);

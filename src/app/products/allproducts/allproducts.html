@@ -28,7 +28,7 @@
 <!-- ✅ المنتجات -->
 <div class="products-container">
   <div *ngFor="let product of products" class="product-card">
-    <img [src]="product.image" alt="product image" />
+   <img [src]="getImageUrl(product.image)" alt="product image" />
 
 
     <h3>{{ product.name }}</h3>
