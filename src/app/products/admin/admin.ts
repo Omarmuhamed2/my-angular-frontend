@@ -90,8 +90,17 @@ export class Admin implements OnInit,CanActivate {
   return 'http://localhost:5000' + imagePath;
 } */
 getImageUrl(imagePath: string): string {
+  if (!imagePath) return '';
+
+  // لو الرابط خارجي (postimg أو غيره) رجّعه زي ما هو
+  if (imagePath.startsWith('http')) {
+    return imagePath;
+  }
+
+  // غير كده، نركّبه على السيرفر
   return `${environment.imageBaseUrl}${imagePath}`;
 }
+
 
 canActivate(): boolean {
     const role = localStorage.getItem('role');
