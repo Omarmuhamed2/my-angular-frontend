@@ -18,18 +18,19 @@ export class AdminOrders implements OnInit {
   ) {}
 
   ngOnInit() {
-  this.http.get(`${this.baseUrl}/api/v1/orders`, {
+  this.http.get(`${this.baseUrl}/orders`, {
+
     headers: {
       Authorization: `Bearer ${this.authService.getToken()}`
     }
   }).subscribe((res: any) => {
     console.log("Orders Response:", res);
-    this.orders = res.orders;
+    this.orders = res.orders; 
   });
 }
 
 getOrders(): void {
-  this.http.get<any[]>(`${this.baseUrl}/api/v1/orders`)
+  this.http.get<any[]>(`${this.baseUrl}/orders`)
     .subscribe({
       next: (data) => this.orders = data,
       error: (err) => console.error('❌ Error loading orders:', err)
@@ -40,7 +41,7 @@ deleteOrder(orderId: string): void {
   const confirmDelete = confirm("Are you sure you want to delete this order?");
   if (!confirmDelete) return;
 
-  this.http.delete(`${this.baseUrl}/api/v1/orders/${orderId}`)
+  this.http.delete(`${this.baseUrl}/orders/${orderId}`)
     .subscribe({
       next: () => {
         this.orders = this.orders.filter(order => order._id !== orderId);
