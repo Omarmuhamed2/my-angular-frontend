@@ -51,7 +51,15 @@ deleteOrder(orderId: string): void {
 }
 
 getImageUrl(imagePath: string): string {
-  return environment.imageBaseUrl + imagePath;
+  if (!imagePath) return '';
+
+  // لو الرابط خارجي (postimg أو غيره) رجّعه زي ما هو
+  if (imagePath.startsWith('http')) {
+    return imagePath;
+  }
+
+  // غير كده، نركّبه على السيرفر
+  return `${environment.imageBaseUrl}${imagePath}`;
 }
 
 

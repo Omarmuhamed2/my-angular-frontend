@@ -89,9 +89,18 @@ export class Allproducts implements OnInit {
     this.toaster.success('تم إضافة المنتج إلى السلة بنجاح!', 'نجاح');
   }
 
-  getImageUrl(imagePath: string): string {
-  return environment.imageBaseUrl + imagePath;
+ getImageUrl(imagePath: string): string {
+  if (!imagePath) return '';
+
+  // لو الرابط خارجي (postimg أو غيره) رجّعه زي ما هو
+  if (imagePath.startsWith('http')) {
+    return imagePath;
+  }
+
+  // غير كده، نركّبه على السيرفر
+  return `${environment.imageBaseUrl}${imagePath}`;
 }
+
 
 
 }
