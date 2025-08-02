@@ -67,19 +67,11 @@ export class ProductsService {
 
   // ✅ Create order
 createOrder(orderData: any): Observable<any> {
-  const token = localStorage.getItem('token');
-
-  const headers: any = {
+  const headers = {
     'Content-Type': 'application/json',
   };
 
-  if (token) {
-    headers['Authorization'] = `Bearer ${token}`;
-  }
-
- return this.http.post('https://ecommerce-api-0lbj.onrender.com/api/v1/orders', orderData, { headers });
-
-
+  return this.http.post('https://ecommerce-api-0lbj.onrender.com/api/v1/orders', orderData, { headers });
 }
 
 

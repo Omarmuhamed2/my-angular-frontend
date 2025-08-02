@@ -59,9 +59,10 @@ export class Checkout implements OnInit {
         this.router.navigate(['/products']);
       },
       error: (err) => {
-        console.error('❌ Order error:', err);
-        this.toaste.error('Failed to place order. Please try again.');
-      }
+                 console.error('❌ Order error:', err);
+                 this.toaste.error(err?.error?.msg || 'Failed to place order. Please try again.');
+}
+
     });
   }
 }
