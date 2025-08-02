@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../service/products-service';
 import { CartService } from '../../cart/service/cart-service';
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { faInfoCircle, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
 

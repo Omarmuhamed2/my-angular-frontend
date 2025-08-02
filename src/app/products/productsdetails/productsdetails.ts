@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../service/products-service';
 import { Location } from '@angular/common';
 import { CartService } from '../../cart/service/cart-service';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
