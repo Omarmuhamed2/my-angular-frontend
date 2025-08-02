@@ -39,7 +39,7 @@ export class ProductsService {
 
   // ✅ Add new product
   addProduct(product: any): Observable<any> {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token'); 
     return this.http.post(this.apiUrl, product, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -68,9 +68,15 @@ export class ProductsService {
   }
 
   // ✅ Create order
-  createOrder(orderData: any): Observable<any> {
-    return this.http.post(this.ordersUrl, orderData);
-  }
+ createOrder(orderData: any): Observable<any> {
+  const token = localStorage.getItem('token');
+  return this.http.post(this.ordersUrl, orderData, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+}
+
 
   // ✅ Upload image
   uploadImage(formData: FormData): Observable<any> {

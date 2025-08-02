@@ -6,6 +6,7 @@ import { CartService } from '../../cart/service/cart-service';
 import { ProductsService } from '../service/products-service';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from '../../../environments/environment';
 
 @Component({
   standalone:false,
@@ -40,17 +41,16 @@ export class Checkout implements OnInit {
 }
 
 
- submitOrder() {
+submitOrder() {
   const mappedItems = this.cartItems.map(item => ({
-  productId: item._id || item.productId,
-  name: item.name,
-  price: item.price,
-  quantity: item.quantity || 1,
-  image: item.image // ✅ أضفنا الصورة هنا
-}));
+    productId: item._id || item.productId,
+    name: item.name,
+    price: item.price,
+    quantity: item.quantity || 1,
+    image: item.image
+  }));
 
-
-  const orderData = {
+  const orderData = { 
     name: this.name,
     address: this.address,
     phone: this.phone,
@@ -58,20 +58,28 @@ export class Checkout implements OnInit {
     total: this.total
   };
 
-  console.log("🚀 Sending to backend:", orderData); // للتأكد
+  const token = localStorage.getItem('token');
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
 
-  this.http.post('http://localhost:5000/api/v1/orders', orderData).subscribe({
+  const apiUrl = environment.apiUrl + '/orders';
+
+  console.log("🚀 Sending to backend:", orderData);
+
+  this.http.post(apiUrl, orderData, { headers }).subscribe({
     next: (res) => {
       console.log('✅ Order placed successfully:', res);
+      this.toaste.success('Order placed successfully! Thank you 😊');
+      this.cartService.clearCart();
+      this.router.navigate(['/products']);
     },
     error: (err) => {
       console.error('❌ Order error:', err);
+      this.toaste.error('Failed to place order. Please try again.');
     }
   });
-  this.cartService.clearCart();
-this.toaste.success('Order placed successfully! Thank you 😊');
-this.router.navigate(['/products']); // أو ['thank-you'] 
-
 }
+
 
 }
