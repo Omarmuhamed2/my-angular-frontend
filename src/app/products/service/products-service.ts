@@ -67,11 +67,20 @@ export class ProductsService {
 
   // ✅ Create order
  createOrder(orderData: any): Observable<any> {
-    const token = localStorage.getItem('token');
-    return this.http.post(this.ordersUrl, orderData, {
-      headers: { Authorization: `Bearer ${token}` }
-    });
+  const token = localStorage.getItem('token');
+
+  const headers: any = {
+    'Content-Type': 'application/json',
+  };
+
+  // ✅ بس لو فيه توكن حقيقي، ضيفه
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
   }
+
+  return this.http.post(this.ordersUrl, orderData, { headers });
+}
+
 
 
 
