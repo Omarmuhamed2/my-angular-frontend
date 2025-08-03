@@ -19,7 +19,7 @@ export class ProductsService {
   getAllProducts(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(this.apiUrl, {
-      headers: { Authorization: `Bearer ${token}` }
+      headers: { Authorization: `Bearer ${token}` } 
     });
   }
 
